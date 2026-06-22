@@ -75,6 +75,34 @@ SN_lat        = [-30.168, -31.638, -32.007,  39.293, 50.054,  37.879,  37.238,  
 # Elevations
 SN_elev       = [   2286,     197,     386,     170,    318,     546,     164,    2225,    145,     384,      580, 200]
 
+@st.cache_data
+def build_observational_data():
+    SN_timezone = [] ; SN_utcoffset = [] ; obs_tz = {}
+    tz_offset = {'UTC' : 0, 'Asia/Manila' : 8, 'Australia/Perth' : 8}
+    
+    for lon, lat, elev in zip(SN_long, SN_lat, SN_elev):
+        tz, offset = Timezone_Finder(lon, lat, elev)
+        SN_timezone.append(tz) ; SN_utcoffset.append(offset)
+
+    for obs, tz, offset in zip(SN_obs, SN_timezone, SN_utcoffset):
+        obs_tz.update    ({obs : tz})
+        tz_offset.update ({tz  : offset})
+
+    tz_offset = dict(sorted(tz_offset.items(), key=lambda item: item[1]))
+
+    SN_OBS = pd.DataFrame({
+        'Observatory': SN_obs,
+        'Longitude': SN_long,
+        'Latitude': SN_lat,
+        'Elevation': SN_elev,
+        'Timezone': SN_timezone,
+        'UTC Offset': SN_utcoffset,
+
+    }).sort_values('Observatory')
+
+    return SN_OBS, obs_tz, tz_offset
+
+
 # Defining disabling boxes so both boxes cannot be checked at the same time
 if "box1_disabled" not in st.session_state:
     st.session_state["box1_disabled"] = False
