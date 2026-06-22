@@ -33,7 +33,7 @@ from astroplan.plots import plot_sky
 
 from ics import Calendar, Event
 
-from Utility import Render_Sidebar
+from Utility import Render_Sidebar, Generate_Calendar
 
 st.set_page_config(layout="wide")
 
@@ -41,9 +41,23 @@ st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph")
 
 Render_Sidebar()
 
+############################################################################
 
 st.subheader('Generate Calendars')
 st.caption("This function produces an .ics file for users to import in their calendar (Gmail and/or Outlook Calendar) for their planning purposes.")
 st.divider(width = 'stretch')
 
+############################################################################
+
+if 'TDates' not in st.session_state:
+    st.warning('No transit data found. Please go back and submit the form first.')
+    st.stop()
+
+TDates = st.session_state['TDates']
+
+############################################################################
+
+Generate_Calendar (TDates)
+
+############################################################################
 
