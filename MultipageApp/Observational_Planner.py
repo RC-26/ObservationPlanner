@@ -54,7 +54,6 @@ st.divider(width = "stretch")
 
 st.subheader("Sky Net Observatories")
 
-st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
 
 ############################################################################
 
@@ -94,7 +93,7 @@ def toggle_box1():
     else:
         st.session_state["box1_disabled"] = False
 
-
+st.caption("Do you want to add your Observatory")
 yes = st.checkbox("Yes", key = "box1", on_change = toggle_box2, disabled=st.session_state["box1_disabled"])
 no = st.checkbox("No", key = "box2", on_change = toggle_box1, disabled = st.session_state["box2_disabled"])
 
@@ -114,22 +113,26 @@ if yes:
         SN_elev.append(elevation)
         
         if 'SN_OBS' not in st.session_state:
+            st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
             SN_OBS, obs_tz, tz_offset = build_observational_data()
             st.session_state['SN_OBS'] = SN_OBS
             st.session_state['obs_tz'] = obs_tz 
             st.session_state['tz_offset'] = tz_offset
         else:
+            st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
             SN_OBS = st.session_state['SN_OBS']
             obs_tz = st.session_state['obs_tz']
             tz_offset = st.session_state['tz_offset']
 
 if no: 
     if 'SN_OBS' not in st.session_state:
+        st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
         SN_OBS, obs_tz, tz_offset = build_observational_data()
         st.session_state['SN_OBS'] = SN_OBS
         st.session_state['obs_tz'] = obs_tz 
         st.session_state['tz_offset'] = tz_offset
     else:
+        st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
         SN_OBS = st.session_state['SN_OBS']
         obs_tz = st.session_state['obs_tz']
         tz_offset = st.session_state['tz_offset']
@@ -139,10 +142,12 @@ if 'SN_OBS' not in st.session_state:
 
 
 if 'SN_OBS' not in st.session_state:
+    st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
     st.session_state['SN_OBS'] = SN_OBS
     st.session_state['obs_tz'] = obs_tz 
     st.session_state['tz_offset'] = tz_offset
 else:
+    st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
     SN_OBS = st.session_state['SN_OBS']
     obs_tz = st.session_state['obs_tz']
     tz_offset = st.session_state['tz_offset']
