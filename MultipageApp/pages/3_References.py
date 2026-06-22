@@ -58,3 +58,5 @@ st.caption("B. M. Morris et. al. Astron. J. 155 (128) 2018")
 st.divider   (width = "stretch")
 
 ############################################################################
+
+st.write ("This Streamlit app was developed by Sace, A.L.S. and Gapay, D.M.V. of PhilSA-ISMDD.")
