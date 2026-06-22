@@ -44,7 +44,7 @@ import io
 ####################################################################################################
 
 def Render_Sidebar():
-    st.link_button("Contact Us", https://linktr.ee/PhilSpaceAgency, icon=":material/mail:")
+    st.sidebar.link_button("Contact Us", https://linktr.ee/PhilSpaceAgency, icon=":material/mail:")
     # email = "info@philsa.gov.ph"
     # subject = "Support Request | Observational Scheduling Tool"
     # body = "Please describe your issue here..."
