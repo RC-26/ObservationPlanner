@@ -37,7 +37,71 @@ import matplotlib.axes as maxes
 if not hasattr(maxes.Axes, 'plot_date'):
     maxes.Axes.plot_date = lambda self, x, y, **kwargs: self.plot(x, y, **kwargs)
 
+from Utility import show_data_exo, Visible_Airmass_Plots
+
+st.set_page_config(layout="wide")
+
+st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
+
+# Making the sidebar
+Render_Sidebar()
+
 ############################################################################
+
+st.title("Airmass Plots") 
+
+st.caption("This displays all the relevant transitions and their airmass plots") 
+
+st.divider(width = 'stretch')
+
+############################################################################
+
+if 'TDates' not in st.session_state:
+    st.warning('No transit data found. Please go back and submit the form first.')
+    st.stop()
+
+TDates = st.session_state['TDates']
+TDates.columns = TDates.columns.str.strip()  
+tz_name = st.session_state['tz_name']
+filtered_obs = st.session_state['filtered_obs']
+NEAcsv = st.session_state['NEAcsv']
+SN_OBS = st.session_state['SN_OBS']
+
+############################################################################
+
+st.write(SN_OBS)
+
+st.divider(width = 'stretch')
+
+############################################################################
+
+st.subheader('Transit Dates')
+st.caption('Displaying the transit dates generated in the previous page, please generate the predicted transit dates before using this page')
+
+exo_filter = show_data_exo(filtered_obs)
+
+st.divider(width = 'stretch')
+
+############################################################################
+
+st.subheader('Air Mass Plots')
+
+
+st.markdown('Specifiy the Main Observatory you would like to use within the SkyNet Telescope Network')
+with st.form('Submisson_Form'):
+    main_observatory = st.text_input(label = 'Main Observatory', placeholder = "Example: 'Cerro Tololo'")
+
+    ed_submit = st.form_submit_button('Submit')
+
+if ed_submit: 
+    Air_Mass = Visible_Airmass_Plots(
+        input_csv        = NEAcsv,
+        transit_dates    = exo_filter,
+        min_alt          = 20,
+        obs_csv          = SN_OBS,
+        main_observatory = str(main_observatory)
+    )
+
 
 
 
