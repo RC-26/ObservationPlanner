@@ -54,8 +54,6 @@ if 'TDates' not in st.session_state:
     st.warning('No transit data found. Please go back and submit the form first.')
     st.stop()
 
-# TDates = st.session_state['TDates']
-
 ############################################################################
 
 Generate_Calendar(TDates)
