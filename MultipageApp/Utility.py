@@ -45,7 +45,7 @@ import io
 
 def Render_Sidebar():
     st.sidebar.markdown("This app is developed by the Interdisciplinary Space Missions Development Division (ISMDD) of the Philippine Space Agency (PhilSA)")
-    st.sidebar.link_button("Contact Us", https://linktr.ee/PhilSpaceAgency, icon=":material/mail:")
+    st.sidebar.link_button("Contact Us", "https://linktr.ee/PhilSpaceAgency" , icon=":material/mail:")
     # email = "info@philsa.gov.ph"
     # subject = "Support Request | Observational Scheduling Tool"
     # body = "Please describe your issue here..."
