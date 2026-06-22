@@ -61,6 +61,7 @@ if 'TDates' not in st.session_state:
     st.stop()
 
 TDates = st.session_state['TDates']
+st.write(TDates)
 TDates.columns = TDates.columns.str.strip()  
 tz_name = st.session_state['tz_name']
 filtered_obs = st.session_state['filtered_obs']
