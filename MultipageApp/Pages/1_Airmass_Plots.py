@@ -37,7 +37,7 @@ import matplotlib.axes as maxes
 if not hasattr(maxes.Axes, 'plot_date'):
     maxes.Axes.plot_date = lambda self, x, y, **kwargs: self.plot(x, y, **kwargs)
 
-from Utility import show_data_exo, Visible_Airmass_Plots
+from Utility import Render_Sidebar, show_data_exo, Visible_Airmass_Plots
 
 st.set_page_config(layout="wide")
 
