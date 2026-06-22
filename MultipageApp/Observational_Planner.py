@@ -222,10 +222,7 @@ with st.form('Submission_Form'):
     ed_submit  = st.form_submit_button('Submit')
 
 if ed_submit:
-    NEAcsv = Get_Transits(targets=targets,
-                          start_date=str(start_date),
-                          end_date=str(end_date),
-                          SN_OBS)
+    NEAcsv = Get_Transits(targets=targets, start_date=str(start_date), end_date=str(end_date), SN_OBS)
 
    
     st.session_state['NEAcsv'] = NEAcsv  
