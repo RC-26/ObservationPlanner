@@ -31,12 +31,14 @@ import astroplan as ap
 import astroplan.plots as app
 from astroplan.plots import plot_sky
 
-from utility import Render_Sidebar
+from Utility import Render_Sidebar
 
 st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
 
 st.title(References) 
 st.caption("All the references used to make this pipeline")
+
+Render_Sidebar()
 
 ############################################################################
 
