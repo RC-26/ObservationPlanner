@@ -45,6 +45,7 @@ import io
 
 def Render_Sidebar():
     st.sidebar.markdown("This app is developed by the Interdisciplinary Space Missions Development Division (ISMDD) of the Philippine Space Agency (PhilSA)")
+    st.sidebar.write   ("Co-developed with Gapay, D.M.V.")
     st.sidebar.link_button("Contact Us", "https://linktr.ee/PhilSpaceAgency" , icon=":material/mail:")
         
 ####################################################################################################
