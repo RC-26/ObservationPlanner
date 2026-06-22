@@ -33,10 +33,189 @@ from astroplan.plots import plot_sky
 
 from ics import Calendar, Event
 
-from utility import Render_Sidebar Timezone_Finder
+from utility import Render_Sidebar, Timezone_Finder, build_observational_data, Get_NEAdata, Get_Transits_Dates, show_data_loc
 
 st.set_page_config(layout="wide")
 
 st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
 
+# Making the sidebar
 Render_Sidebar()
+
+############################################################################
+
+st.title("Observational Scheduling Tool")
+
+st.markdown("This pipeline is for helping users plan their observations by extracting data from the NASA Exoplanet Archive to predict the next transit events. This current iteration of the tool focuses on Ground-Based Telescopes that are part of the SkyNet Robotic Telescope Network") 
+
+st.divider(width = "stretch")
+
+############################################################################
+
+st.subheader("Sky Net Observatories")
+
+st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
+
+############################################################################
+
+# Finding the appropriate timezone and making our data set (Timezone_Finder(), build_observational_data())
+
+# Defining our arrays
+
+# Observatory names 
+SN_obs = ['Cerro Tololo Inter-American Obs', 'Meckering Obs', 'Perth Obs', 'American Public University System Obs', 
+              'Astronomical Obs of the Jagiellonian University', 'Fan Mountain Obs', 'Hampden-Sydney College Obs', 
+              'Montana Learning Center', 'Morehead', 'Northern Skies Obs', 'Sleaford Obs', 'Carabao Island Obs'] 
+
+# Longitudes 
+SN_long       = [-70.805, 116.989, 116.136, -77.863, 19.828, -78.694, -78.471, -105.53, -79.05, -72.166, -105.921, 121.91442717417193]
+
+# Latitudes
+SN_lat        = [-30.168, -31.638, -32.007,  39.293, 50.054,  37.879,  37.238,  32.902, 35.914,  44.325,   52.085, 12.056992836862623]
+
+# Elevations
+SN_elev       = [   2286,     197,     386,     170,    318,     546,     164,    2225,    145,     384,      580, 200]
+
+# Defining disabling boxes so both boxes cannot be checked at the same time
+if "box1_disabled" not in st.session_state:
+    st.session_state["box1_disabled"] = False
+if "box2_disabled" not in st.session_state:
+    st.session_state["box2_disabled"] = False 
+
+def toggle_box2():
+    if st.session_state["box1"]:
+        st.session_state["box2_disabled"] = True
+    else:
+        st.session_state["box2_disabled"] = False
+
+def toggle_box1():
+    if st.session_state["box2"]:
+        st.session_state["box1_disabled"] = True
+    else:
+        st.session_state["box1_disabled"] = False
+
+
+yes = st.checkbox("Yes", key = "box1", on_change = toggle_box2, disabled=st.session_state["box1_disabled"])
+no = st.checkbox("No", key = "box2", on_change = toggle_box1, disabled = st.session_state["box2_disabled"])
+
+if yes:
+    
+    with st.form('Submission_Forms'):
+        observatory_name = st.text_input(label='Observatory Name: ', placeholder="Example: 'Royal Observatory Edinburgh'")
+        latitude  = st.number_input(label = 'latitude' , placeholder = "Enter in Decimal Coordinates")
+        longitude = st.number_input(label = 'longitude', placeholder = "Enter in Decimal Coordinates")
+        elevation = st.number_input(label = 'elevation', placeholder = "Enter in Meters (m)")
+        ed_submit = st.form_submit_button('Submit')
+        
+    if ed_submit:
+        SN_obs.append(observatory_name) 
+        SN_long.append(longitude)
+        SN_lat.append(latitude)
+        SN_elev.append(elevation)
+        
+        if 'SN_OBS' not in st.session_state:
+            SN_OBS, obs_tz, tz_offset = build_observational_data()
+            st.session_state['SN_OBS'] = SN_OBS
+            st.session_state['obs_tz'] = obs_tz 
+            st.session_state['tz_offset'] = tz_offset
+        else:
+            SN_OBS = st.session_state['SN_OBS']
+            obs_tz = st.session_state['obs_tz']
+            tz_offset = st.session_state['tz_offset']
+
+if no: 
+    if 'SN_OBS' not in st.session_state:
+        SN_OBS, obs_tz, tz_offset = build_observational_data()
+        st.session_state['SN_OBS'] = SN_OBS
+        st.session_state['obs_tz'] = obs_tz 
+        st.session_state['tz_offset'] = tz_offset
+    else:
+        SN_OBS = st.session_state['SN_OBS']
+        obs_tz = st.session_state['obs_tz']
+        tz_offset = st.session_state['tz_offset']
+
+if 'SN_OBS' not in st.session_state:
+    st.stop()
+
+
+if 'SN_OBS' not in st.session_state:
+    st.session_state['SN_OBS'] = SN_OBS
+    st.session_state['obs_tz'] = obs_tz 
+    st.session_state['tz_offset'] = tz_offset
+else:
+    SN_OBS = st.session_state['SN_OBS']
+    obs_tz = st.session_state['obs_tz']
+    tz_offset = st.session_state['tz_offset']
+
+data = (SN_OBS, obs_tz, tz_offset)
+st.dataframe (SN_OBS)
+st.divider (width = 'stretch')
+
+############################################################################
+
+st.subheader("NASA Exoplanet Archive (NEA) Data")
+st.caption("This Table displays the data from the NASA Exoplanet Archive of all the Host Stars and their respective Exoplanets")
+
+############################################################################
+
+# Getting the data from the NASA Exoplanet Archive (Get_NEAdata() function)
+
+NEAcsv = Get_NEAdata()
+
+Display_Option = st.radio ("Display the data of all available NEA transiting exoplanets? (This may help you if you are unsure of the target you want to observe.)", ['No', 'Yes'])
+if Display_Option == 'Yes':
+    # st.caption ('This table/CSV contains all the available data of transiting exoplanets in the NASA Exoplanet Archive (NEA)')
+    if 'All_NEAcsv' not in st.session_state:
+        All_NEAcsv = Get_NEAdata(Vband_limit = 9999)
+        st.session_state['All_NEAcsv'] = All_NEAcsv
+    All_NEAcsv = st.session_state['All_NEAcsv']
+    st.dataframe(st.session_state['All_NEAcsv'])
+    st.write ('Host Stars:', len(sorted(set(All_NEAcsv['Host Name']))), '| Exoplanets', len(sorted(set(All_NEAcsv['Planet Name']))))
+    
+
+st.divider(width = 'stretch')
+
+############################################################################
+
+st.subheader("Generate Transit Dates")
+st.caption("This simplifies the table above, giving the next Transit dates for the specified telescopes over the specified time")
+
+options = [(tz, offset) for tz, offset in tz_offset.items()]
+
+with st.form('Submission_Form'):
+    targets    = st.text_input(label='Target planet: ', placeholder="Example: 'TRAPPIST-1 c' or 'All'")
+    start_date = st.datetime_input(label='Start date: ')
+    end_date   = st.datetime_input(label='End date: **(Must be later than the Start Date)**')
+    timezone = st.selectbox (label = 'Timezone of output dates / UTC offset', options = options, index = options.index(('UTC', 0)),
+                             key = 'timezone select')
+    ed_submit  = st.form_submit_button('Submit')
+
+if ed_submit:
+    NEAcsv = Get_Transits(targets=targets,
+                          start_date=str(start_date),
+                          end_date=str(end_date))
+
+   
+    st.session_state['NEAcsv'] = NEAcsv  
+
+if 'NEAcsv' in st.session_state:
+    NEAcsv = st.session_state['NEAcsv']
+    st.dataframe(NEAcsv)
+
+    st.divider(width = 'stretch')
+
+    tz_name, tz_offset_val = timezone
+    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt=20, timezone=tz_name)
+    st.session_state['TDates'] = TDates          
+    st.session_state['tz_name'] = tz_name   
+    filtered_obs = show_data_loc(TDates)
+    st.session_state['filtered_obs'] = filtered_obs
+        
+    st.divider(width = 'stretch')
+
+
+
+             
+
+
+
