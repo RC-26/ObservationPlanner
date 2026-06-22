@@ -38,6 +38,8 @@ st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph")
 st.title(References) 
 st.caption("All the references used to make this pipeline")
 
+############################################################################
+
 st.divider(width = "stretch")
 
 st.subheader("Skynet Robotic Telescope Network")
@@ -52,4 +54,6 @@ st.subheader("Astroplan")
 st.caption("B. M. Morris et. al. Astron. J. 155 (128) 2018")
 
 st.divider   (width = "stretch")
+
+############################################################################
 
