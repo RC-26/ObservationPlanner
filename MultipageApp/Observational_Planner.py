@@ -75,7 +75,6 @@ SN_lat        = [-30.168, -31.638, -32.007,  39.293, 50.054,  37.879,  37.238,  
 # Elevations
 SN_elev       = [   2286,     197,     386,     170,    318,     546,     164,    2225,    145,     384,      580, 200]
 
-@st.cache_data
 def build_observational_data():
     SN_timezone = [] ; SN_utcoffset = [] ; obs_tz = {}
     tz_offset = {'UTC' : 0, 'Asia/Manila' : 8, 'Australia/Perth' : 8}
