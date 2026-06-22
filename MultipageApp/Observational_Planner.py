@@ -170,12 +170,10 @@ if 'SN_OBS' not in st.session_state:
 
 
 if 'SN_OBS' not in st.session_state:
-    st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
     st.session_state['SN_OBS'] = SN_OBS
     st.session_state['obs_tz'] = obs_tz 
     st.session_state['tz_offset'] = tz_offset
 else:
-    st.caption("This Table displays all the available Sky Net Data and their geographical coordinates comprising of: Longitude, Latitude, ELevation")
     SN_OBS = st.session_state['SN_OBS']
     obs_tz = st.session_state['obs_tz']
     tz_offset = st.session_state['tz_offset']
