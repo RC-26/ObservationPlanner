@@ -49,11 +49,12 @@ st.divider(width = 'stretch')
 
 ############################################################################
 
+TDates = st.session_state['TDates']
 if 'TDates' not in st.session_state:
     st.warning('No transit data found. Please go back and submit the form first.')
     st.stop()
 
-TDates = st.session_state['TDates']
+# TDates = st.session_state['TDates']
 
 ############################################################################
 
