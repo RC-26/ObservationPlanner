@@ -54,7 +54,6 @@ if 'TDates' not in st.session_state:
     st.stop()
 
 TDates = st.session_state['TDates']
-st.dataframe(TDates) 
 
 ############################################################################
 
