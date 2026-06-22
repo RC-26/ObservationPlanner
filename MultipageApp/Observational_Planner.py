@@ -33,7 +33,7 @@ from astroplan.plots import plot_sky
 
 from ics import Calendar, Event
 
-from utility import Render_Sidebar, Timezone_Finder, build_observational_data, Get_NEAdata, Get_Transits_Dates, show_data_loc
+from Utility import Render_Sidebar, Timezone_Finder, build_observational_data, Get_NEAdata, Get_Transits_Dates, show_data_loc
 
 st.set_page_config(layout="wide")
 
