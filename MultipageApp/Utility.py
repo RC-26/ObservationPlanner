@@ -46,14 +46,6 @@ import io
 def Render_Sidebar():
     st.sidebar.markdown("This app is developed by the Interdisciplinary Space Missions Development Division (ISMDD) of the Philippine Space Agency (PhilSA)")
     st.sidebar.link_button("Contact Us", "https://linktr.ee/PhilSpaceAgency" , icon=":material/mail:")
-    # email = "info@philsa.gov.ph"
-    # subject = "Support Request | Observational Scheduling Tool"
-    # body = "Please describe your issue here..."
-    
-    # st.sidebar.markdown("This app is developed by the Interdisciplinary Space Missions Development Division (ISMDD) of the Philippine Space Agency (PhilSA)")
-    # st.sidebar.link_button("Visit our website", "https://philsa.gov.ph", icon = ":material/public:", icon_position = "left")
-    # with st.sidebar:
-    #         st.link_button("Contact Us", f"mailto:{email}?subject={subject}&body={body}",icon=":material/mail:")
         
 ####################################################################################################
 # Timezone Finder
