@@ -119,7 +119,7 @@ def toggle_box1():
     else:
         st.session_state["box1_disabled"] = False
 
-st.caption("Do you want to add your Observatory")
+st.caption("Do you want to add your own custom Observatory?")
 yes = st.checkbox("Yes", key = "box1", on_change = toggle_box2, disabled=st.session_state["box1_disabled"])
 no = st.checkbox("No", key = "box2", on_change = toggle_box1, disabled = st.session_state["box2_disabled"])
 
