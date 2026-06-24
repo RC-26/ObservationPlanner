@@ -215,6 +215,7 @@ def Get_NEAdata(targets = None, Vband_limit = None):
 ####################################################################################################
 
 def Get_Transits(targets, start_date, end_date, obs_csv):
+    print (targets)
     if ',' in targets:
         targets = targets.split(', ')
     elif ',' not in targets and type(targets) != list:  
