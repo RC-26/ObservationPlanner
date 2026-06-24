@@ -59,4 +59,4 @@ st.divider   (width = "stretch")
 
 ############################################################################
 
-st.write ("<h1>This Streamlit app was developed by Sace, A.L.S.<sup style='font-size:.8em;'>1</sup>, Gapay, D.M.V.<sup style='font-size:.8em;'>2</sup>, Macalalad, E.P.<sup style='font-size:.8em;'>1</sup>, & Reyes<sup style='font-size:.8em;'>1, 3</sup>.</h1>", unsafe_allow_html=True)
+st.write ("This Streamlit app was developed by <h1>Sace, A.L.S.<sup style='font-size:.8em;'>1</sup></h1>, <h1>Gapay, D.M.V.<sup style='font-size:.8em;'>2</sup></h1>, <h1>Macalalad, E.P.<sup style='font-size:.8em;'>1</sup></h1>, & <h1>Reyes<sup style='font-size:.8em;'>1, 3</sup>.</h1>")
