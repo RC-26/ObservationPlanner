@@ -46,7 +46,7 @@ Render_Sidebar()
 
 st.title("Observational Scheduling Tool")
 
-st.markdown("This pipeline is for helping users plan their observations by extracting data from the NASA Exoplanet Archive to predict the next transit events. The current iteration of this tool focuses on Ground-Based Telescopes that are part of the SkyNet Robotic Telescope Network, including the Carabao Island Observatory.") 
+st.markdown("This pipeline is for helping users plan their observations by extracting data from the NASA Exoplanet Archive to predict the next transit events.  \nThe current iteration of this tool focuses on Ground-Based Telescopes that are part of the SkyNet Robotic Telescope Network, including the Carabao Island Observatory.") 
 
 st.divider(width = "stretch")
 
