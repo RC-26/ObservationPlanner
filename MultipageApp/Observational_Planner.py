@@ -207,7 +207,7 @@ st.divider(width = 'stretch')
 ############################################################################
 
 st.subheader("Generate Transit Dates")
-st.caption("This simplifies the table above, giving the next Transit dates for the specified telescopes over the specified time")
+st.caption("Generates the dates of the predicted transit events of all exoplanets within the time window specified by the user.")
 
 options = [(tz, offset) for tz, offset in tz_offset.items()]
 
