@@ -59,4 +59,4 @@ st.divider   (width = "stretch")
 
 ############################################################################
 
-st.write ("This Streamlit app was developed by Sace, A.L.S., Gapay, D.M.V., Macalalad, E.P., & Reyes, R.C. of PhilSA.")
+st.write ("This Streamlit app was developed by Sace, A.L.S.<sup style='font-size:.8em;'>1</sup>, Gapay, D.M.V.<sup style='font-size:.8em;'>2</sup>, Macalalad, E.P.<sup style='font-size:.8em;'>1</sup>, & Reyes<sup style='font-size:.8em;'>1, 3</sup>.")
