@@ -117,6 +117,7 @@ def build_observational_data(SN_obs, SN_long, SN_lat, SN_elev):
 def Get_NEAdata(targets=None, Vband_limit=None):   
     if targets is not None:
         if ',' in str(targets):
+            print (targets)
             targets = targets.split(', ')
         else:
             targets = [targets]
