@@ -69,12 +69,6 @@ SN_OBS = st.session_state['SN_OBS']
 
 ############################################################################
 
-st.write(SN_OBS)
-
-st.divider(width = 'stretch')
-
-############################################################################
-
 st.subheader('Transit Dates')
 st.caption('Displaying the transit dates generated in the previous page, please generate the predicted transit dates before using this page')
 
