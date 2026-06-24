@@ -53,7 +53,7 @@ def Render_Sidebar():
 ####################################################################################################
 
 def Timezone_Finder(lon, lat, elev):
-    location = EarthLocation(lon=lon*u.deg, lat=lat*u.deg, height=elev*u.m)
+    location = EarthLocation(lon = lon*u.deg, lat = lat*u.deg, height = elev*u.m)
     tf = TimezoneFinder()                         
     timezone_str = tf.certain_timezone_at(lng=location.lon.deg, lat=location.lat.deg)
 
@@ -73,12 +73,13 @@ def Timezone_Finder(lon, lat, elev):
 # Takes array of latitudes, longitudes and elevations, finds timezones, builds SN_OBS DataFrame
 ####################################################################################################
 
-SN_obs = ['Cerro Tololo Inter-American Obs', 'Meckering Obs', 'Perth Obs', 'American Public University System Obs',
-              'Astronomical Obs of the Jagiellonian University', 'Fan Mountain Obs', 'Hampden-Sydney College Obs',
-              'Montana Learning Center', 'Morehead', 'Northern Skies Obs', 'Sleaford Obs', 'Carabao Island Obs']
-SN_long       = [-70.805, 116.989, 116.136, -77.863, 19.828, -78.694, -78.471, -105.53, -79.05, -72.166, -105.921, 121.91442717417193]
-SN_lat        = [-30.168, -31.638, -32.007,  39.293, 50.054,  37.879,  37.238,  32.902, 35.914,  44.325,   52.085, 12.056992836862623]
-SN_elev       = [   2286,     197,     386,     170,    318,     546,     164,    2225,    145,     384,      580, 200]
+SN_obs  = ['Cerro Tololo Inter-American Obs', 'Meckering Obs', 'Perth Obs', 'American Public University System Obs',
+           'Astronomical Obs of the Jagiellonian University', 'Fan Mountain Obs', 'Hampden-Sydney College Obs',
+           'Montana Learning Center', 'Morehead', 'Northern Skies Obs', 'Sleaford Obs', 'Carabao Island Obs']
+SN_long = [-70.805, 116.989, 116.136, -77.863, 19.828, -78.694, -78.471, -105.53, -79.05, -72.166, -105.921, 121.91442717417193]
+SN_lat  = [-30.168, -31.638, -32.007,  39.293, 50.054,  37.879,  37.238,  32.902, 35.914,  44.325,   52.085, 12.056992836862623]
+SN_elev = [   2286,     197,     386,     170,    318,     546,     164,    2225,    145,     384,      580, 200]
+
 def build_observational_data(SN_obs, SN_long, SN_lat, SN_elev):
     SN_timezone  = []
     SN_utcoffset = []
@@ -114,10 +115,10 @@ def build_observational_data(SN_obs, SN_long, SN_lat, SN_elev):
 ####################################################################################################
 
 @st.cache_data
-def Get_NEAdata(targets=None, Vband_limit=None):   
+def Get_NEAdata(targets = None, Vband_limit = None):   
     if targets is not None:
+        print (targets)
         if ',' in str(targets):
-            print (targets)
             targets = targets.split(', ')
         else:
             targets = [targets]
