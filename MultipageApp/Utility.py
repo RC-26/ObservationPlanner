@@ -117,11 +117,10 @@ def build_observational_data(SN_obs, SN_long, SN_lat, SN_elev):
 @st.cache_data
 def Get_NEAdata(targets = None, Vband_limit = None):   
     if targets is not None:
-        if ',' in str(targets):
-            st.write (str(targets))
+        if type(targets) == str and ',' in targets:
             targets = targets.split(', ')
-        else:
-            targets = [targets]
+        if type(targets) == list:
+            targets = targets
         if type(targets[0]) == list:
             targets = targets[0]
 
