@@ -51,9 +51,9 @@ st.markdown("This pipeline is for helping users plan their observations by extra
 st.divider(width = "stretch")
 
 ############################################################################
-
+TDates = []
+TDates = st.session_state('TDates')
 st.subheader("Sky Net Observatories")
-
 
 ############################################################################
 
