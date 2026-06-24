@@ -57,8 +57,6 @@ st.subheader("Sky Net Observatories")
 
 ############################################################################
 
-TDates = []
-st.session_state('TDates') = TDates
 # Finding the appropriate timezone and making our data set (Timezone_Finder(), build_observational_data())
 
 # Defining our arrays
