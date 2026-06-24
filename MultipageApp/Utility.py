@@ -174,8 +174,8 @@ def Get_NEAdata(targets = None, Vband_limit = None):
     NEAcsv.rename(columns={
         'hostname'        : 'Host Name',
         'pl_name'         : 'Planet Name',
-        'ra'              : 'ra',
-        'dec'             : 'dec',
+        'ra'              : 'RA',
+        'dec'             : 'Dec',
         'sy_dist'         : 'Distance [pc]',
         'sy_snum'         : 'Number of Stars',
         'sy_pnum'         : 'Number of Planets',
@@ -322,8 +322,8 @@ def Generate_Transit_Dates(CSV, timezone='UTC', obs_csv=None, min_alt=20, specif
     for idx in range(len(CSV)):
         print('%-4s/%-4s' % (idx+1, len(CSV)), end='\r')
 
-        ra         = CSV['ra'         ][idx]
-        dec        = CSV['dec'        ][idx]
+        ra         = CSV['RA'         ][idx]
+        dec        = CSV['Dec'        ][idx]
         HostName   = CSV['Host Name'  ][idx]
         PlanetName = CSV['Planet Name'][idx]
 
@@ -418,7 +418,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
     constraints = [ap.AltitudeConstraint(min=min_alt*u.deg, max=90*u.deg),
                    ap.AtNightConstraint(-12*u.deg)]
 
-    for target_name, ra, dec in zip(input_csv['Planet Name'], input_csv['ra'], input_csv['dec']):
+    for target_name, ra, dec in zip(input_csv['Planet Name'], input_csv['RA'], input_csv['Dec']):
         target_name = str(target_name)
         ra          = float(ra)
         dec         = float(dec)
