@@ -127,9 +127,9 @@ if yes:
     
     with st.form('Submission_Forms'):
         observatory_name = st.text_input(label='Observatory Name: ', placeholder="Example: 'Royal Observatory Edinburgh'")
-        latitude  = st.number_input(label = 'latitude' , placeholder = "Enter in Decimal Coordinates")
-        longitude = st.number_input(label = 'longitude', placeholder = "Enter in Decimal Coordinates")
-        elevation = st.number_input(label = 'elevation', placeholder = "Enter in Meters (m)")
+        latitude  = st.number_input(label = 'Latitude' , placeholder = "Enter in Decimal Coordinates")
+        longitude = st.number_input(label = 'Longitude', placeholder = "Enter in Decimal Coordinates")
+        elevation = st.number_input(label = 'Elevation', placeholder = "Enter in Meters (m)")
         ed_submit = st.form_submit_button('Submit')
         
     if ed_submit:
