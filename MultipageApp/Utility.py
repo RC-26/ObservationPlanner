@@ -443,14 +443,15 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             fig  = plt.figure()
             YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
             HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
-            # start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
-            # start_time = at.Time(start_time, scale = 'utc', format = 'iso')
-            # if HH < 18:
-            #     start_time = start_time - 1*u.day
-                
-            # time = start_time
+            start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
+            start_time = at.Time(start_time, scale = 'utc', format = 'iso')
             time = at.Time(transit_time, scale = 'utc', format = 'iso')
-            time = time + np.linspace(-6, +18, 97) * u.hour
+            if  HH < 18:
+                time = time + np.linspace(-18, +6, 97) * u.hour
+            if HH >= 18:
+                time = time + np.linspace(-6, +18, 97) * u.hour
+            #     start_time = start_time - 1*u.day
+            # time = time + np.linspace(-6, +18, 97) * u.hour
             # current_date = str(time[0]).split(' ')[0]
             current_date = YMD
 
