@@ -70,7 +70,7 @@ SN_OBS = st.session_state['SN_OBS']
 ############################################################################
 
 st.subheader('Transit Dates')
-st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page)**')
+st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
 
 exo_filter = show_data_exo(filtered_obs)
 st.divider(width = 'stretch')
@@ -87,7 +87,7 @@ with st.form('Submisson_Form'):
     ed_submit = st.form_submit_button('Submit')
 
 if ed_submit:
-    st.write ("The **dark shaded regions** represent the **civil**, **nautical**, and **astronomical twilights**. The darkest region represents **night time**".)
+    st.write ("The **dark shaded regions** represent the **civil**, **nautical**, and **astronomical twilights**. The darkest region represents **night time**.")
     Air_Mass = Visible_Airmass_Plots(
         input_csv        = NEAcsv,
         transit_dates    = exo_filter,
