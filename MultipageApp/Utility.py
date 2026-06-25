@@ -498,7 +498,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             label_fs = 14
             plt.xticks(np.linspace(plt.xticks()[0][0], plt.xticks()[0][-1], 13).tolist())
             xlabel_date = plt.gca().get_xlabel().split(' ')[2]
-            plt.title('%s | Transit on %s' % (target_name, xlabel_date), fontsize=35)
+            st.write(plt.gca().get_xlabel())
+            plt.title('%s | Transit on %s' % (target_name, current_date), fontsize=35)
             plt.xlabel('Time [UTC]', size=label_fs)
             plt.ylabel('Altitude $[\u00b0]$', size=label_fs)
 
