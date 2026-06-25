@@ -449,8 +449,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 if DD-1 < 10: DD = '0%s' % (DD-1)
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
 
-            st.write(start_time)
-            time = at.Time(start_time)
+            time = at.Time(start_time, scale = 'utc', format = 'iso')
             time = time + np.linspace(0, +24, 97) * u.hour
             current_date = str(time[0]).split(' ')[0]
 
@@ -511,7 +510,6 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             plt.grid(axis='y', linewidth=4)
             plt.legend(bbox_to_anchor=(1, 1), loc='upper left', framealpha=0.9)
             plt.ylim(min_alt, 90)
-            plt.axvline(at.Time(str(transit_time)), linestyle = '--', color = 'green', label = 'Transit Midpoint')
             plt.gcf().set_size_inches(24, 12)
 
             filename = os.getcwd() + '/AirmassPlots/%s/AIR_%s.png' % (target_name, current_date)
