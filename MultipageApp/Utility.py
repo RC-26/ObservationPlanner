@@ -440,14 +440,14 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
 
         for day_count, transit_time in enumerate(target_transits):
             fig  = plt.figure()
-            YMD = str(transit_time).split(' ')[0] ; YY, MM, DD = YMD.split('-') ; DD = int(DD)
-            HMS = str(transit_time).split(' ')[1] ; HH, MM, SS = HMS.split(':') ; HH = int(HH)
+            YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
+            HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
             if HH >= 18:
                 if DD < 10: DD = '0%s' % DD
-                start_time = '%s-%s-%s %s:%s:%s' % (YY, MM, DD, '18', '00', '00')
+                start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
             if HH <  18:
                 if DD-1 < 10: DD = '0%s' % (DD-1)
-                start_time = '%s-%s-%s %s:%s:%s' % (YY, MM, DD, '18', '00', '00')
+                start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
 
             st.write(start_time)
             time = at.Time(start_time)
