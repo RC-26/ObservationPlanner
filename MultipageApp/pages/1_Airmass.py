@@ -77,7 +77,7 @@ st.divider(width = 'stretch')
 
 ############################################################################
 
-st.subheader('Air Mass Plots')
+st.subheader('Airmass Plots')
 
 
 st.markdown('Specifiy the Main Observatory you would like to use within the SkyNet Telescope Network')
