@@ -440,6 +440,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
 
         for day_count, transit_time in enumerate(target_transits):
             fig  = plt.figure()
+            st.write (str(transit_time))
             time = at.Time(str(transit_time))
             time = time + np.linspace(0, +24, 97) * u.hour
             current_date = str(time[0]).split(' ')[0]
