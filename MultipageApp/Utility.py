@@ -309,11 +309,9 @@ def Generate_Transit_Dates(CSV, timezone='UTC', obs_csv=None, min_alt=20, specif
 
     DF              = pd.DataFrame()
     Obs_All         = []
-    Host_All        = []
-    Planet_All      = []
-    Obs_Ingress     = []
-    Obs_Midpoint    = []
-    Obs_Egress      = []
+    Host_All        = [] ; Planet_All      = []
+    Obs_Ingress     = [] ; Obs_Midpoint    = [] ; Obs_Egress      = []
+    Obs_RA          = [] ; Obs_Dec         = []
     Transit_Numbers = []
 
     constraints = [ap.AltitudeConstraint(min=min_alt*u.deg, max=90*u.deg),
@@ -354,13 +352,15 @@ def Generate_Transit_Dates(CSV, timezone='UTC', obs_csv=None, min_alt=20, specif
                     T_mid      += tz_offset[timezone] * u.hour
                     Day_Tearly += tz_offset[timezone] * u.hour
                     Day_Tlate  += tz_offset[timezone] * u.hour
-                    Host_All.append(HostName)
-                    Planet_All.append(PlanetName)
-                    Obs_All.append(obs_name)
-                    Transit_Numbers.append(int(transit_number))
-                    Obs_Ingress.append(Day_Tearly.iso)
-                    Obs_Midpoint.append(T_mid.iso)
-                    Obs_Egress.append(Day_Tlate.iso)
+                    Host_All.append (HostName)
+                    Planet_All.append (PlanetName)
+                    Obs_All.append (obs_name)
+                    Transit_Numbers.append (int(transit_number))
+                    Obs_Ingress.append (Day_Tearly.iso)
+                    Obs_Midpoint.append (T_mid.iso)
+                    Obs_Egress.append (Day_Tlate.iso)
+                    Obs_RA.append (ra)
+                    Obs_Dec.append (dec)
 
     DF['Host Name'      ] = Host_All
     DF['Planet Name'    ] = Planet_All
@@ -369,6 +369,8 @@ def Generate_Transit_Dates(CSV, timezone='UTC', obs_csv=None, min_alt=20, specif
     DF['Ingress'        ] = Obs_Ingress
     DF['Midpoint'       ] = Obs_Midpoint
     DF['Egress'         ] = Obs_Egress
+    DF['RA'             ] = Obs_RA
+    DF['Dec'            ] = Obs_Dec
 
     droplist = [idx for idx in range(len(DF)) if len(DF['Ingress'][idx]) == 0]
     DF = DF.drop(droplist).reset_index(drop=True)
@@ -436,6 +438,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 main_target   = FixedTarget(coord=main_coord, name=obs_name)
 
         target_transits = sorted(list(set(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint'])))
+
         st.write('Target Transits', target_transits)
 
         for day_count, transit_time in enumerate(target_transits):
@@ -458,7 +461,11 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             night_start = at.Time(night_time[0].iso)
             night_end   = at.Time(night_time[1].iso)
 
-            if not ap.is_observable(constraints, main_observer, main_target, time_range=[night_start, night_end]):
+            index        = transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint'].index(transit_time)
+            ingress_time = at.Time(transit_dates[transit_dates['Planet Name'] == target_name]['Ingress' ][index])
+            egress_time  = at.Time(transit_dates[transit_dates['Planet Name'] == target_name]['Egress'  ][index])
+
+            if not ap.is_observable(constraints, main_observer, main_target, time_range=[ingress_time, egress_time]):
                 plt.close()
                 continue
 
