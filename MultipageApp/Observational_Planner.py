@@ -173,7 +173,7 @@ else:
     tz_offset = st.session_state['tz_offset']
 
 data = (SN_OBS, obs_tz, tz_offset)
-st.caption("This Table displays all the available SkyNet observatories and their geographical coordinates comprising of **Longitude**, **Latitude**, and Elevation— including their timezone and UTC offset.  \nThe Carabao Island Observatory is included in this pipeline.")
+st.caption("This Table displays all the available SkyNet observatories and their geographical coordinates comprising of **Longitude**, **Latitude**, and **Elevation**— including their **Timezone** and **UTC offset**. The Carabao Island Observatory is included in this pipeline.")
 st.dataframe (SN_OBS)
 st.divider (width = 'stretch')
 
