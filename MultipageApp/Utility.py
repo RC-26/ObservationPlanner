@@ -449,7 +449,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 if DD-1 < 10: DD = '0%s' % (DD-1)
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
 
-            time = at.Time(start_time, scale = 'utc', format = 'iso')
+            time = at.Time(start_time)
             time = time + np.linspace(0, +24, 97) * u.hour
             current_date = str(time[0]).split(' ')[0]
 
