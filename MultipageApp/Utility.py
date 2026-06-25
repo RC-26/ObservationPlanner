@@ -518,7 +518,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             plt.gcf().set_size_inches(24, 12)
 
             filename = os.getcwd() + '/AirmassPlots/%s/AIR_%s.png' % (target_name, current_date)
-            plt.savefig(filename, bbox_inches='tight', dpi=450)
+            plt.savefig(filename, bbox_inches='tight', dpi=600)
             st.pyplot(fig)
             st.divider(width='stretch')
             plt.close()
