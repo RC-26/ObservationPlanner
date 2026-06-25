@@ -449,7 +449,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             if  HH < 18:
                 time = time + np.linspace(-6, +18, 97) * u.hour
             if HH >= 18:
-                time = time + np.linspace(0, 24, 97) * u.hour
+                time = time + np.linspace(0, +24, 97) * u.hour
             #     start_time = start_time - 1*u.day
             # time = time + np.linspace(-6, +18, 97) * u.hour
             # current_date = str(time[0]).split(' ')[0]
