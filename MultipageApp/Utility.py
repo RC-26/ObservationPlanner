@@ -517,7 +517,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             plt.grid(axis='y', linewidth=4)
             plt.legend(bbox_to_anchor=(1, 1), loc='upper left', framealpha=0.9)
             plt.ylim(min_alt, 90)
-            plt.gca().axvline(at.Time(transit_time).datetime64, color = 'green', linestyle = '--', linewidth = 2, label = 'Transit Midpoint')
+            plt.gca().axvline(at.Time(transit_time).datetime64, color = 'green', linestyle = '-.', linewidth = 2, label = 'Transit Midpoint')
             plt.gcf().set_size_inches(24, 12)
 
             filename = os.getcwd() + '/AirmassPlots/%s/AIR_%s.png' % (target_name, current_date)
