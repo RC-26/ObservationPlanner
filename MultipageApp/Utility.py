@@ -449,16 +449,15 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             if 0 <= HH and HH < 6:
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '00', '00', '00')
                 start_time = at.Time(start_time  , scale = 'utc', format = 'iso')
-                time       = at.Time(transit_time, scale = 'utc', format = 'iso')
-                time = time + np.linspace(-18,  +6, 97) * u.hour
+                time       = start_time + np.linspace(-18,  +6, 97) * u.hour
             if 6 <= HH and HH < 12:
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '06', '00', '00')
                 start_time = at.Time(start_time, scale = 'utc', format = 'iso')
-                time = time + np.linspace(-12, +12, 97) * u.hour
+                time       = time + np.linspace(-12, +12, 97) * u.hour
             if 12 <= HH and HH < 18:
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '12', '00', '00')
                 start_time = at.Time(start_time, scale = 'utc', format = 'iso')
-                time = time + np.linspace( -6, +18, 97) * u.hour
+                time       = time + np.linspace( -6, +18, 97) * u.hour
             if 18 <= HH:
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
                 time = time + np.linspace(  0, +24, 97) * u.hour
