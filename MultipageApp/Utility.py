@@ -439,8 +439,6 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
 
         target_transits = sorted(list(set(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint'])))
 
-        st.write('Target Transits', target_transits)
-
         for day_count, transit_time in enumerate(target_transits):
             fig  = plt.figure()
             YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
@@ -498,7 +496,6 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             label_fs = 14
             plt.xticks(np.linspace(plt.xticks()[0][0], plt.xticks()[0][-1], 13).tolist())
             xlabel_date = plt.gca().get_xlabel().split(' ')[2]
-            st.write(plt.gca().get_xlabel())
             plt.title('%s | Transit on %s' % (target_name, current_date), fontsize=35)
             plt.xlabel('Time [UTC]', size=label_fs)
             plt.ylabel('Altitude $[\u00b0]$', size=label_fs)
