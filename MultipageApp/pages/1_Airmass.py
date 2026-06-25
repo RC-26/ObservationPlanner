@@ -50,7 +50,7 @@ Render_Sidebar()
 
 st.title("Airmass Plots") 
 
-st.caption("This displays all the relevant transit events and their airmass plots.    \nThe **dark shaded regions** represent the **civil**, **nautical**, and **astronomical twilights**. The darkest region represents **night time**.") 
+st.caption("This displays all the relevant transit events and their airmass plots.") 
 
 st.divider(width = 'stretch')
 
@@ -70,7 +70,7 @@ SN_OBS = st.session_state['SN_OBS']
 ############################################################################
 
 st.subheader('Transit Dates')
-st.caption('Displaying the transit dates generated in the previous page, please generate the predicted transit dates before using this page')
+st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page)**')
 
 exo_filter = show_data_exo(filtered_obs)
 st.divider(width = 'stretch')
@@ -80,13 +80,14 @@ st.divider(width = 'stretch')
 st.subheader('Airmass Plots')
 
 
-st.markdown('Specifiy the Main Observatory you would like to use within the SkyNet Telescope Network')
+st.markdown('Specifiy the Main Observatory you would like to use within the Skynet Telescope Network.')
 with st.form('Submisson_Form'):
     main_observatory = st.text_input(label = 'Main Observatory', placeholder = "Example: 'Cerro Tololo'")
 
     ed_submit = st.form_submit_button('Submit')
 
-if ed_submit: 
+if ed_submit:
+    st.write ("The **dark shaded regions** represent the **civil**, **nautical**, and **astronomical twilights**. The darkest region represents **night time**".)
     Air_Mass = Visible_Airmass_Plots(
         input_csv        = NEAcsv,
         transit_dates    = exo_filter,
