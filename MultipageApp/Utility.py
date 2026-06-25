@@ -471,7 +471,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 coord    = SkyCoord(ra=ra, dec=dec, unit='deg')
                 target   = FixedTarget(coord=coord, name=obs_name)
 
-                if not ap.is_observable(constraints, observer, target, time_range=[night_start, night_end]):
+                if not ap.is_observable(constraints, observer, target, time_range=[ingress_time, egress_time]):
                     continue
 
                 m_ls = {'markersize': 0, 'color': 'black', 'linewidth': 4, 'linestyle': ':'}
