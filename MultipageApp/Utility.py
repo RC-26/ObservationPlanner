@@ -436,7 +436,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 main_target   = FixedTarget(coord=main_coord, name=obs_name)
 
         target_transits = sorted(list(set(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint'])))
-        st.write(target_transits)
+        st.write('Target Transits', target_transits)
 
         for day_count, transit_time in enumerate(target_transits):
             fig  = plt.figure()
@@ -446,7 +446,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, MM, DD,   18, 00, 00)
             if HH <  18:
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, MM, DD-1, 18, 00, 00)
-            
+
+            st.write(start_time)
             time = at.Time(start_time)
             time = time + np.linspace(0, +24, 97) * u.hour
             current_date = str(time[0]).split(' ')[0]
