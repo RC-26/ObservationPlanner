@@ -50,7 +50,7 @@ Render_Sidebar()
 
 st.title("Airmass Plots") 
 
-st.caption("This displays all the relevant transitions and their airmass plots") 
+st.caption("This displays all the relevant transit events and their airmass plots.    \nThe **dark shaded regions** represent the **civil**, **nautical**, and **astronomical twilights**. The darkest region represents **night time**.") 
 
 st.divider(width = 'stretch')
 
