@@ -450,7 +450,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 
             # time = start_time
             time = at.Time(transit_time, scale = 'utc', format = 'iso')
-            time = time + np.linspace(-12, +12, 97) * u.hour
+            time = time + np.linspace(-6, +18, 97) * u.hour
             # current_date = str(time[0]).split(' ')[0]
             current_date = YMD
 
