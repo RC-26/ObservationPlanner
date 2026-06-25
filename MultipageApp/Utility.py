@@ -441,15 +441,16 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
 
         for day_count, transit_time in enumerate(target_transits):
             fig  = plt.figure()
-            YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
-            HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
-            start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
-            start_time = at.Time(start_time, scale = 'utc', format = 'iso')
-            if HH < 18:
-                start_time = start_time - 1*u.day
+            # YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
+            # HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
+            # start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
+            # start_time = at.Time(start_time, scale = 'utc', format = 'iso')
+            # if HH < 18:
+            #     start_time = start_time - 1*u.day
                 
-            time = start_time
-            time = time + np.linspace(0, +24, 97) * u.hour
+            # time = start_time
+            time = at.Time(transit_time, scale = 'utc', format = 'iso')
+            time = time + np.linspace(-12, +12, 97) * u.hour
             # current_date = str(time[0]).split(' ')[0]
             current_date = YMD
 
