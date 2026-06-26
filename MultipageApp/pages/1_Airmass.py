@@ -73,6 +73,7 @@ st.subheader('Transit Dates')
 st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
 
 exo_filter = show_data_exo(filtered_obs)
+st.write('exo_filter', exo_filter)
 st.divider(width = 'stretch')
 
 ############################################################################
@@ -80,10 +81,9 @@ st.divider(width = 'stretch')
 st.subheader('Airmass Plots')
 
 
-st.markdown('Specifiy the Main Observatory you would like to use within the Skynet Telescope Network.')
+st.markdown('Specifiy the **main observatory** you would like to use within the Skynet Telescope Network.')
 with st.form('Submisson_Form'):
     main_observatory = st.text_input(label = 'Main Observatory', placeholder = "Example: 'Cerro Tololo'")
-
     ed_submit = st.form_submit_button('Submit')
 
 if ed_submit:
