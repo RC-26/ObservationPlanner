@@ -80,7 +80,7 @@ st.divider(width = 'stretch')
 st.subheader('Airmass Plots')
 
 
-st.markdown('Specifiy the **exoplanet** you want to observe **main observatory** you would like to use within the Skynet Telescope Network.')
+st.markdown('Specifiy the **exoplanet** you want to observe, and the **main observatory** you would like to use within the Skynet Telescope Network.')
 obs_options = list(sorted(set(exo_filter['Observatory'])))
 pn_options  = list(sorted(set(exo_filter['Planet Name'])))
 with st.form('Submisson_Form'):
