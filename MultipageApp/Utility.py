@@ -443,8 +443,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
         for midtransit in target_transits:
             for idx in range(len(target_csv)):
                 if target_csv['Midpoint'][idx] == midtransit:
-                    if target_ingress['Ingress'][idx] not in target_ingress: target_ingress.append (target_ingress['Ingress'][idx])
-                    if target_egress [ 'Egress'][idx] not in  target_egress: target_egress.append  ( target_egress[ 'Egress'][idx])
+                    if target_csv['Ingress'][idx] not in target_ingress: target_ingress.append (target_csv['Ingress'][idx])
+                    if target_csv[ 'Egress'][idx] not in  target_egress: target_egress.append  (target_csv[ 'Egress'][idx])
 
         for transit_time, ingress, egress in enumerate(target_transits, target_ingress, target_egress):
             fig  = plt.figure()
