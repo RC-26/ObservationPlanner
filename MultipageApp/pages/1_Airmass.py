@@ -73,7 +73,6 @@ st.subheader('Transit Dates')
 st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
 
 exo_filter = show_data_exo(filtered_obs)
-st.write('exo_filter', exo_filter)
 st.divider(width = 'stretch')
 
 ############################################################################
