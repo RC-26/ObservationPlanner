@@ -85,7 +85,7 @@ obs_options = list(sorted(set(exo_filter['Observatory'])))
 pn_options  = list(sorted(set(exo_filter['Planet Name'])))
 with st.form('Submisson_Form'):
     main_observatory = st.selectbox (label = 'Main Observatory', options = obs_options, index = obs_options.index(obs_options[0]))
-    exoplanet_filter = st.selectbox (label = 'Exoplanet'       , options = obs_options, index =  pn_options.index( pn_options[0]))
+    exoplanet_filter = st.selectbox (label = 'Exoplanet'       , options =  pn_options, index =  pn_options.index( pn_options[0]))
     ed_submit = st.form_submit_button('Submit')
 
 if ed_submit:
