@@ -95,6 +95,6 @@ if ed_submit:
         transit_dates    = exo_filter,
         min_alt          = 20,
         obs_csv          = SN_OBS,
-        main_observatory = str(main_observator),
+        main_observatory = str(main_observatory),
         exoplanet_filter = str(exoplanet_filter)
     )
