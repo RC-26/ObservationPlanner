@@ -82,8 +82,9 @@ st.subheader('Airmass Plots')
 
 
 st.markdown('Specifiy the **main observatory** you would like to use within the Skynet Telescope Network.')
+obs_options = list(sorted(set(exo_filter['Observatory'])))
 with st.form('Submisson_Form'):
-    main_observatory = st.selectbox (label = 'Main Observatory', options = list(sorted(set(exo_filter['Observatory']))), index = options.index(('Cerro Tololo Inter-American Obs')))
+    main_observatory = st.selectbox (label = 'Main Observatory', options = obs_options, index = obs_options.index(('Cerro Tololo Inter-American Obs')))
     # main_observatory = st.text_input(label = 'Main Observatory', placeholder = "Example: 'Cerro Tololo'")
     ed_submit = st.form_submit_button('Submit')
 
