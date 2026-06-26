@@ -450,9 +450,6 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             fig  = plt.figure()
             YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
             HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
-            # start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '18', '00', '00')
-            # start_time = at.Time(start_time, scale = 'utc', format = 'iso')
-            # time = at.Time(transit_time, scale = 'utc', format = 'iso')
             if 0 <= HH and HH < 6:
                 start_time = '%s-%s-%s %s:%s:%s' % (YY, Mon, DD, '00', '00', '00')
                 start_time = at.Time(start_time  , scale = 'utc', format = 'iso')
@@ -532,6 +529,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             plt.grid(axis='y', linewidth=4)
             plt.legend(bbox_to_anchor=(1, 1), loc='upper left', framealpha=0.9)
             plt.ylim(min_alt, 90)
+            plt.axvspan(at.Time(ingress_time).datetime64, at.Time(egress_time).datetime64, color = 'green', alpha = 0.1)
             plt.axvline(at.Time(transit_time).datetime64, color = 'green', linestyle = '-.', linewidth = 2, label = 'Transit Midpoint')
             plt.gcf().set_size_inches(24, 12)
 
