@@ -437,7 +437,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 main_coord    = SkyCoord(ra=ra, dec=dec, unit='deg')
                 main_target   = FixedTarget(coord=main_coord, name=obs_name)
 
-        target_csv      = transit_dates[transit_dates['Planet Name'] == target_name].reset_index().drop(['index', 'level_0'], axis=1)
+        target_csv      = transit_dates[transit_dates['Planet Name'] == target_name].reset_index()
+        st.write(target_csv)
         target_transits = sorted(list(set(target_csv['Midpoint'])))
         target_ingress  = [] ; target_egress = []
         st.write (target_csv)
