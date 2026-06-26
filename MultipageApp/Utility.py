@@ -414,7 +414,7 @@ def show_data_exo(data):
 # Generates and saves airmass plots for each observable transit
 ####################################################################################################
 
-def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, main_observatory='Cerro Tololo'):
+def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, main_observatory='Cerro Tololo', exoplanet_filter = None):
     starttime = timeit.default_timer()
 
     constraints = [ap.AltitudeConstraint(min=min_alt*u.deg, max=90*u.deg),
@@ -422,6 +422,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
 
     for target_name, ra, dec in zip(input_csv['Planet Name'], input_csv['RA'], input_csv['Dec']):
         target_name = str(target_name)
+        if exoplanet_filter != None:
+            if target_name != exoplanet_filter: continue
         ra          = float(ra)
         dec         = float(dec)
 
