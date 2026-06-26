@@ -440,7 +440,6 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
         target_csv      = transit_dates[transit_dates['Planet Name'] == target_name].reset_index(drop = True)
         target_transits = sorted(list(set(target_csv['Midpoint'])))
         target_ingress  = [] ; target_egress = []
-        st.write (target_csv)
         for midtransit in target_transits:
             for idx in range(len(target_csv)):
                 if target_csv['Midpoint'][idx] == midtransit:
