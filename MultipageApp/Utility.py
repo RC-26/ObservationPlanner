@@ -469,7 +469,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             night_start = at.Time(night_time[0].iso)
             night_end   = at.Time(night_time[1].iso)
 
-            index        = list(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint']).index(transit_time)
+            st.write (transit_dates[transit_dates['Planet Name'] == target_name])
+            index        =    list(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint']).index(transit_time)
             ingress_time = at.Time(transit_dates[transit_dates['Planet Name'] == target_name]['Ingress' ][index])
             egress_time  = at.Time(transit_dates[transit_dates['Planet Name'] == target_name]['Egress'  ][index])
 
