@@ -82,9 +82,10 @@ st.subheader('Airmass Plots')
 
 st.markdown('Specifiy the **main observatory** you would like to use within the Skynet Telescope Network.')
 obs_options = list(sorted(set(exo_filter['Observatory'])))
+pn_options  = list(sorted(set(exo_filter['Planet Name'])))
 with st.form('Submisson_Form'):
     main_observatory = st.selectbox (label = 'Main Observatory', options = obs_options, index = obs_options.index(('Cerro Tololo Inter-American Obs')))
-    # main_observatory = st.text_input(label = 'Main Observatory', placeholder = "Example: 'Cerro Tololo'")
+    exoplanet_filter = st.selectbox (label = 'Main Observatory', options = obs_options)
     ed_submit = st.form_submit_button('Submit')
 
 if ed_submit:
@@ -94,5 +95,6 @@ if ed_submit:
         transit_dates    = exo_filter,
         min_alt          = 20,
         obs_csv          = SN_OBS,
-        main_observatory = str(main_observatory)
+        main_observatory = str(main_observator),
+        exoplanet_filter = str(exoplanet_filter)
     )
