@@ -437,9 +437,16 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
                 main_coord    = SkyCoord(ra=ra, dec=dec, unit='deg')
                 main_target   = FixedTarget(coord=main_coord, name=obs_name)
 
-        target_transits = sorted(list(set(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint'])))
+        target_csv      = transit_dates[transit_dates['Planet Name'] == target_name]
+        target_transits = sorted(list(set(target_csv['Midpoint'])))
+        target_ingress  = [] ; target_egress = []
+        for midtransit in target_transits:
+            for idx in range(len(target_csv)):
+                if target_csv['Midpoint'][idx] == midtransit:
+                    if target_ingress['Ingress'][idx] not in target_ingress: target_ingress.append (target_ingress['Ingress'][idx])
+                    if target_egress [ 'Egress'][idx] not in  target_egress: target_egress.append  ( target_egress[ 'Egress'][idx])
 
-        for day_count, transit_time in enumerate(target_transits):
+        for transit_time, ingress, egress in enumerate(target_transits, target_ingress, target_egress):
             fig  = plt.figure()
             YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
             HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
@@ -469,11 +476,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt=20, obs_csv=None, ma
             night_start = at.Time(night_time[0].iso)
             night_end   = at.Time(night_time[1].iso)
 
-            st.write ('Midpoint list', list(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint']))
-            index        =    list(transit_dates[transit_dates['Planet Name'] == target_name]['Midpoint']).index(transit_time)
-            st.write ('index', index)
-            ingress_time = at.Time(transit_dates[transit_dates['Planet Name'] == target_name]['Ingress' ][index])
-            egress_time  = at.Time(transit_dates[transit_dates['Planet Name'] == target_name]['Egress'  ][index])
+            ingress_time = at.Time(ingress, scale = 'utc', format = 'iso')
+            egress_time  = at.Time( egress, scale = 'utc', format = 'iso')
 
             if not ap.is_observable(constraints, main_observer, main_target, time_range=[ingress_time, egress_time]):
                 plt.close()
