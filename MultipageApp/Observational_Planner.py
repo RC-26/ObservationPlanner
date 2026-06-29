@@ -217,7 +217,7 @@ with st.form('Submission_Form'):
     ed_submit  = st.form_submit_button('Submit')
 
 if ed_submit:
-    NEAcsv = Get_Transits(targets=targets, start_date=str(start_date), end_date=str(end_date), obs_csv = SN_OBS)
+    NEAcsv = Get_Transits(targets=targets, start_date=str(start_date), end_date=str(end_date), obs_csv = SN_OBS, Vband_limit = Vband_limit)
 
    
     st.session_state['NEAcsv'] = NEAcsv  
@@ -229,7 +229,7 @@ if 'NEAcsv' in st.session_state:
     st.divider(width = 'stretch')
 
     tz_name, tz_offset_val = timezone
-    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = 20, Vband_limit = Vband_limit, timezone = tz_name, tz_offset = tz_offset)
+    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = 20, timezone = tz_name, tz_offset = tz_offset)
     st.session_state['TDates'] = TDates          
     st.session_state['tz_name'] = tz_name   
     filtered_obs = show_data_loc(TDates)
