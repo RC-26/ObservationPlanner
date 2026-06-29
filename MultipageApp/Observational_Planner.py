@@ -46,7 +46,7 @@ Render_Sidebar()
 
 st.title("Observational Scheduling Tool")
 
-st.markdown("This pipeline is for helping users plan their observations by extracting data from the **NASA Exoplanet Archive (NEA)** to predict the next transit events.  \nThe current iteration of this tool focuses on ground-based telescopes that are part of the **Skynet Robotic Telescope Network (SkyNet)**, including the **Carabao Island Observatory**.") 
+st.markdown("This pipeline is for helping users plan their observations by extracting data from the **NASA Exoplanet Archive (NEA)** to predict the next transit events.  \nThe current iteration of this tool focuses on ground-based telescopes that are part of the **Skynet Robotic Telescope Network (SkyNet)**.") 
 
 st.divider(width = "stretch")
 
@@ -173,14 +173,14 @@ else:
     tz_offset = st.session_state['tz_offset']
 
 data = (SN_OBS, obs_tz, tz_offset)
-st.caption("This table displays all the accessible SkyNet observatories and their geographical coordinates (**Longitude**, **Latitude**, and **Elevation**) including their **Timezone** and **UTC offset**.  \nThe Carabao Island Observatory is included in this pipeline.")
+st.markdown ("This table displays all the accessible SkyNet observatories and their geographical coordinates (**Longitude**, **Latitude**, and **Elevation**) including their **Timezone** and **UTC offset**.  \nThe **Carabao Island Observatory** is included in this pipeline.")
 st.dataframe (SN_OBS)
 st.divider (width = 'stretch')
 
 ############################################################################
 
 st.subheader("NASA Exoplanet Archive (NEA) Data")
-st.caption("This Table displays the data from the NASA Exoplanet Archive of all the Host Stars and their respective Exoplanets")
+st.caption("This Table displays the data of all the **host stars**, and their respective **exoplanets**, from the **NASA Exoplanet Archive**.")
 
 ############################################################################
 
