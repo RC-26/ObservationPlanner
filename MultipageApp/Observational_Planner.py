@@ -229,7 +229,7 @@ if 'NEAcsv' in st.session_state:
     st.divider(width = 'stretch')
 
     tz_name, tz_offset_val = timezone
-    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt=20, timezone=tz_name)
+    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = 20, timezone = tz_name, tz_offset = tz_offset)
     st.session_state['TDates'] = TDates          
     st.session_state['tz_name'] = tz_name   
     filtered_obs = show_data_loc(TDates)
