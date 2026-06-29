@@ -166,10 +166,13 @@ def Get_NEAdata(targets = None, Vband_limit = None):
     NEAcsv = NEAdata.to_pandas(index=False).sort_values('pl_name')
 
     # FIX: check for 'All' BEFORE filtering, otherwise [' '] wipes everything
-    st.write (targets)
     if targets is not None and targets != [' ']:
-        st.write(targets)
-        NEAcsv = NEAcsv[NEAcsv[['hostname', 'pl_name']].isin(targets).any(axis=1)]
+        for target in targets:
+          if target == targets[0]:
+            dummy_pd = NEAcsv[NEAcsv['Planet Name'].str.contains(target, case = False)]
+          else:
+            dummy_pd = pd.concat ([dummy_pd, NEAcsv[NEAcsv['Planet Name'].str.contains(target, case = False)]], ignore_index=True)
+    NEAcsv = dummy_pd
 
     NEAcsv = NEAcsv.drop(columns=['sky_coord.ra', 'sky_coord.dec'])
 
