@@ -52,7 +52,7 @@ st.divider(width = "stretch")
 
 ############################################################################
 
-st.subheader("Sky Net Observatories")
+st.subheader("SkyNet Observatories")
 
 ############################################################################
 
