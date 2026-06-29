@@ -39,18 +39,18 @@ if not hasattr(maxes.Axes, 'plot_date'):
 
 from Utility import Render_Sidebar, show_data_exo, Visible_Airmass_Plots
 
-st.set_page_config(layout="wide")
+st.set_page_config (layout="wide")
 
-st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
+st.logo ("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
 
 # Making the sidebar
 Render_Sidebar()
 
 ############################################################################
 
-st.title("Airmass Plots") 
+st.title ("Airmass Plots") 
 
-st.caption("This displays all the relevant transit events and their airmass plots.") 
+st.markdown ("This displays all the relevant **transit events** and their **airmass plots**.") 
 
 st.divider(width = 'stretch')
 
@@ -73,8 +73,8 @@ min_alt = st.session_state['min_alt']
 ############################################################################
 
 st.subheader('Transit Dates')
-st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
-st.caption('**Note: The generated airmass plots are always in UTC.**')
+st.markdown ('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
+st.markdown ('**Note: The generated airmass plots are always in UTC.**')
 
 exo_filter = show_data_exo(filtered_obs)
 st.divider(width = 'stretch')
