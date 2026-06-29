@@ -219,8 +219,6 @@ with st.form('Submission_Form'):
 
 if ed_submit:
     NEAcsv = Get_Transits(targets=targets, start_date=str(start_date), end_date=str(end_date), obs_csv = SN_OBS, Vband_limit = Vband_limit)
-
-   
     st.session_state['NEAcsv'] = NEAcsv  
 
 if 'NEAcsv' in st.session_state:
@@ -235,6 +233,7 @@ if 'NEAcsv' in st.session_state:
     st.session_state['tz_name'] = tz_name   
     filtered_obs = show_data_loc(TDates)
     st.session_state['filtered_obs'] = filtered_obs
+    st.session_state['min_alt'] = min_alt
         
     st.divider(width = 'stretch')
 
