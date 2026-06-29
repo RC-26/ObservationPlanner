@@ -74,7 +74,7 @@ min_alt = st.session_state['min_alt']
 
 st.subheader('Transit Dates')
 st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
-st.caption('**Note:. The generated airmass plots are always in UTC.**')
+st.caption('**Note: The generated airmass plots are always in UTC.**')
 
 exo_filter = show_data_exo(filtered_obs)
 st.divider(width = 'stretch')
