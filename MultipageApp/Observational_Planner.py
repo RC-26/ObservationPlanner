@@ -230,7 +230,8 @@ if 'NEAcsv' in st.session_state:
     tz_name, tz_offset_val = timezone
     TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = min_alt, timezone = tz_name, tz_offset = tz_offset)
     filtered_obs = show_data_loc(TDates)
-    st.session_state['TDates'       ] = TDates          
+    st.session_state['TDates'       ] = TDates
+    st.session_state['timezone'     ] = timezone
     st.session_state['tz_name'      ] = tz_name
     st.session_state['tz_offset_val'] = tz_offset_val
     st.session_state['filtered_obs' ] = filtered_obs
