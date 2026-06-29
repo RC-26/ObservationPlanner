@@ -36,7 +36,7 @@ from Utility import Render_Sidebar
 st.logo ("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
 
 st.title ("References") 
-st.caption ("All the references used to make this pipeline")
+st.markdown ("All the references used to make this pipeline.")
 
 Render_Sidebar()
 
