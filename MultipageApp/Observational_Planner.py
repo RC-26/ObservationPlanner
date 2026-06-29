@@ -213,7 +213,7 @@ with st.form('Submission_Form'):
     start_date = st.datetime_input (label='Start date: ')
     end_date   = st.datetime_input (label='End date: **(Must be later than the Start Date)**')
     timezone = st.selectbox (label = 'Timezone of output dates / UTC offset', options = options, index = options.index(('UTC', 0)))
-    min_alt     = st.number_input (label = 'Minimum Altitude **(Default value = 20.00)**'      , value = 20.00, placeholder = "Default value = 20")
+    min_alt     = st.number_input (label = 'Minimum Altitude **(Default value = 20.00)**'      , value = 20.00, min_value = 0.00, max_value = 89.00, placeholder = "Default value = 20")
     Vband_limit = st.number_input (label = 'V-band Magnitude limit **(Default value = 10.00)**', value = 10.00, placeholder = "Default value = 10")
     ed_submit  = st.form_submit_button('Submit')
 
