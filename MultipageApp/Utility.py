@@ -213,7 +213,7 @@ def Get_NEAdata(targets = None, Vband_limit = None):
 # Predicts next transit events within a date range using NEA ephemeris data
 ####################################################################################################
 
-def Get_Transits(targets, start_date, end_date, obs_csv):
+def Get_Transits(targets, start_date, end_date, obs_csv, Vband_limit = 10):
     print (targets)
     if type(targets) == str and ',' in targets:
         targets = targets.split(', ')
@@ -227,7 +227,7 @@ def Get_Transits(targets, start_date, end_date, obs_csv):
     lats  = obs_csv['Latitude']
     elevs = obs_csv['Elevation']
 
-    NEAcsv = Get_NEAdata(targets) 
+    NEAcsv = Get_NEAdata(targets, Vband_limit = Vband_limit) 
 
     time_tdb = at.Time(start_date).tdb
     time_jd  = time_tdb.jd * u.day
