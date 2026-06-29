@@ -172,7 +172,7 @@ def Get_NEAdata(targets = None, Vband_limit = None):
             dummy_pd = NEAcsv[NEAcsv['Planet Name'].str.contains(target, case = False)]
           else:
             dummy_pd = pd.concat ([dummy_pd, NEAcsv[NEAcsv['Planet Name'].str.contains(target, case = False)]], ignore_index=True)
-    NEAcsv = dummy_pd
+        NEAcsv = dummy_pd
 
     NEAcsv = NEAcsv.drop(columns=['sky_coord.ra', 'sky_coord.dec'])
 
