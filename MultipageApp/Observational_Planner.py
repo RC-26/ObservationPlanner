@@ -120,8 +120,8 @@ def toggle_box1():
         st.session_state["box1_disabled"] = False
 
 st.caption("Do you want to add your own custom Observatory?")
-yes = st.checkbox("Yes", key = "box1", on_change = toggle_box2, disabled=st.session_state["box1_disabled"])
-no = st.checkbox("No", key = "box2", on_change = toggle_box1, disabled = st.session_state["box2_disabled"])
+yes = st.checkbox("Yes", key = "box1", on_change = toggle_box2, disabled = st.session_state["box1_disabled"])
+no  = st.checkbox("No" , key = "box2", on_change = toggle_box1, disabled = st.session_state["box2_disabled"])
 
 if yes:
     
@@ -180,7 +180,7 @@ st.divider (width = 'stretch')
 ############################################################################
 
 st.subheader("NASA Exoplanet Archive (NEA) Data")
-st.caption("This Table displays the data of all the **host stars**, and their respective **exoplanets**, from the **NASA Exoplanet Archive**.")
+st.markdown("This Table displays the data of all the **host stars**, and their respective **exoplanets**, from the **NASA Exoplanet Archive**.")
 
 ############################################################################
 
