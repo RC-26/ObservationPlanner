@@ -169,9 +169,9 @@ def Get_NEAdata(targets = None, Vband_limit = None):
     if targets is not None and targets != [' ']:
         for target in targets:
           if target == targets[0]:
-            dummy_pd = NEAcsv[NEAcsv['Planet Name'].str.contains(target, case = False)]
+            dummy_pd = NEAcsv[NEAcsv['pl_name'].str.contains(target, case = False)]
           else:
-            dummy_pd = pd.concat ([dummy_pd, NEAcsv[NEAcsv['Planet Name'].str.contains(target, case = False)]], ignore_index=True)
+            dummy_pd = pd.concat ([dummy_pd, NEAcsv[NEAcsv['pl_name'].str.contains(target, case = False)]], ignore_index=True)
         NEAcsv = dummy_pd
 
     NEAcsv = NEAcsv.drop(columns=['sky_coord.ra', 'sky_coord.dec'])
