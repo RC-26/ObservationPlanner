@@ -74,7 +74,6 @@ def Generate_Calendar (TDatesCSV):
               time_dict.update({(ing, eg) : [obs]})
           if (ing, eg)     in time_dict.keys() and obs not in time_dict[(ing, eg)]:
               time_dict[(ing, eg)].append (obs)
-      st.write('**%s**' % pn)
       for key, val in time_dict.items():
           e = Event()
           e.name = pn
@@ -91,7 +90,8 @@ def Generate_Calendar (TDatesCSV):
 
       with open(os.getcwd() + '/ICS_files/' + '%s.ics' % pn, 'w') as f:
           f.write(ics_content)
-     
+
+      st.write('**%s**' % pn)
       st.download_button(label="Download ICS file", data = ics_content,file_name=f"{pn}.ics", mime = "text/calendar", icon = ":material/download:")
       
       st.divider(width = 'stretch')  
