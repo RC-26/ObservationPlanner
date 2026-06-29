@@ -458,8 +458,8 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt = 20, obs_csv = None
         for transit_time, ingress, egress in zip(target_transits, target_ingress, target_egress):
             fig  = plt.figure()
             transit_time = str(at.Time(transit_time, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
-            transit_time = str(at.Time(     ingress, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
-            transit_time = str(at.Time(      egress, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
+            ingress      = str(at.Time(     ingress, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
+            egress       = str(at.Time(      egress, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
             YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
             HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
             if 0 <= HH and HH < 6:
