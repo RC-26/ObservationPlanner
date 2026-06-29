@@ -61,8 +61,10 @@ if 'TDates' not in st.session_state:
     st.stop()
 
 TDates = st.session_state['TDates']
-TDates.columns = TDates.columns.str.strip()  
-tz_name = st.session_state['tz_name']
+TDates.columns = TDates.columns.str.strip()
+timezone = st.session_state['timezone']
+# tz_name = st.session_state['tz_name']
+# tz_offset_val = st.session_state['tz_offset_val']
 filtered_obs = st.session_state['filtered_obs']
 NEAcsv = st.session_state['NEAcsv']
 SN_OBS = st.session_state['SN_OBS']
@@ -96,6 +98,7 @@ if ed_submit:
         input_csv        = NEAcsv,
         transit_dates    = exo_filter,
         min_alt          = min_alt,
+        timezone         = timezone,
         obs_csv          = SN_OBS,
         main_observatory = str(main_observatory),
         exoplanet_filter = str(exoplanet_filter)
