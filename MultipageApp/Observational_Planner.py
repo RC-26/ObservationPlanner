@@ -96,7 +96,7 @@ def build_observational_data():
         'Timezone': SN_timezone,
         'UTC Offset': SN_utcoffset,
 
-    }).sort_values('Observatory')
+    }).sort_values('Observatory').reset_index(drop = True)
 
     return SN_OBS, obs_tz, tz_offset
 
