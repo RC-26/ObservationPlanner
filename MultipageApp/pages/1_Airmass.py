@@ -71,6 +71,7 @@ SN_OBS = st.session_state['SN_OBS']
 
 st.subheader('Transit Dates')
 st.caption('These are the transit dates generated in the previous page. **(Please generate the predicted transit dates before using this page.)**')
+st.caption('**WARNING:**. The generated dates in the previous page must be in UTC for this section to work properly.')
 
 exo_filter = show_data_exo(filtered_obs)
 st.divider(width = 'stretch')
