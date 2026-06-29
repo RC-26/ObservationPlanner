@@ -35,18 +35,18 @@ from ics import Calendar, Event
 
 from Utility import Render_Sidebar, Generate_Calendar
 
-st.set_page_config(layout="wide")
+st.set_page_config (layout="wide")
 
-st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
+st.logo ("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
 
 Render_Sidebar()
 
 ############################################################################
 
-st.subheader('Generate Calendars')
-st.caption("This function produces an .ics file for users to import in their calendar (Gmail and/or Outlook Calendar) for their planning purposes.")
-st.caption("**NOTE: The times written in the ICS files correspond to the timezone you have specified in the 'Observation Planner' tab.**")
-st.divider(width = 'stretch')
+st.subheader ('Generate Calendars')
+st.markdown  ("This function produces an **ICS** file for users to import in their calendar (Gmail and/or Outlook Calendar) for their planning purposes.")
+st.markdown  ("**NOTE**: The times written in the ICS files correspond to the timezone you have specified in the 'Observation Planner' tab.")
+st.divider   (width = 'stretch')
 
 ############################################################################
 
