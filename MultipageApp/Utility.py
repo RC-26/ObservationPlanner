@@ -419,11 +419,13 @@ def show_data_exo(data):
 # Generates and saves airmass plots for each observable transit
 ####################################################################################################
 
-def Visible_Airmass_Plots(input_csv, transit_dates, min_alt = 20, obs_csv = None, main_observatory='Cerro Tololo', exoplanet_filter = None):
+def Visible_Airmass_Plots(input_csv, transit_dates, min_alt = 20, obs_csv = None, main_observatory='Cerro Tololo', exoplanet_filter = None, timezone = ('UTC', 0)):
     starttime = timeit.default_timer()
 
     constraints = [ap.AltitudeConstraint(min = min_alt*u.deg, max = 90*u.deg),
                    ap.AtNightConstraint(-12*u.deg)]
+
+    tz_name = timezone[0] ; tz_offset_val = timezone[1]
 
     for target_name, ra, dec in zip(input_csv['Planet Name'], input_csv['RA'], input_csv['Dec']):
         target_name = str(target_name)
@@ -455,6 +457,9 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt = 20, obs_csv = None
 
         for transit_time, ingress, egress in zip(target_transits, target_ingress, target_egress):
             fig  = plt.figure()
+            transit_time = str(at.Time(transit_time, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
+            transit_time = str(at.Time(     ingress, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
+            transit_time = str(at.Time(      egress, format = 'iso', scale = 'utc') - tz_offset_val * u.hour)
             YMD = str(transit_time).split(' ')[0] ; YY, Mon, DD = YMD.split('-') ; DD = int(DD)
             HMS = str(transit_time).split(' ')[1] ; HH, Min, SS = HMS.split(':') ; HH = int(HH)
             if 0 <= HH and HH < 6:
@@ -515,7 +520,7 @@ def Visible_Airmass_Plots(input_csv, transit_dates, min_alt = 20, obs_csv = None
             label_fs = 14
             plt.xticks(np.linspace(plt.xticks()[0][0], plt.xticks()[0][-1], 13).tolist())
             xlabel_date = plt.gca().get_xlabel().split(' ')[2]
-            plt.title('%s | Transit on %s' % (target_name, current_date), fontsize=35)
+            plt.title('%s | Transit on %s [UTC]' % (target_name, current_date), fontsize=35)
             plt.xlabel('Time [UTC]', size=label_fs)
             plt.ylabel('Altitude $[\u00b0]$', size=label_fs)
 
