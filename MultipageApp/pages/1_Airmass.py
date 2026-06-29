@@ -66,6 +66,7 @@ tz_name = st.session_state['tz_name']
 filtered_obs = st.session_state['filtered_obs']
 NEAcsv = st.session_state['NEAcsv']
 SN_OBS = st.session_state['SN_OBS']
+min_alt = st.session_state['min_alt']
 
 ############################################################################
 
@@ -94,7 +95,7 @@ if ed_submit:
     Air_Mass = Visible_Airmass_Plots(
         input_csv        = NEAcsv,
         transit_dates    = exo_filter,
-        min_alt          = 20,
+        min_alt          = min_alt,
         obs_csv          = SN_OBS,
         main_observatory = str(main_observatory),
         exoplanet_filter = str(exoplanet_filter)
