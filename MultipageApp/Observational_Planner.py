@@ -209,11 +209,11 @@ st.caption("Generates the dates of the predicted transit events of all exoplanet
 options = [(tz, offset) for tz, offset in tz_offset.items()]
 
 with st.form('Submission_Form'):
-    targets    = st.text_input(label='Target planet: ', placeholder="Example: 'TRAPPIST-1 c' or 'All'")
-    start_date = st.datetime_input(label='Start date: ')
-    end_date   = st.datetime_input(label='End date: **(Must be later than the Start Date)**')
-    timezone = st.selectbox (label = 'Timezone of output dates / UTC offset', options = options, index = options.index(('UTC', 0)),
-                             key = 'timezone select')
+    targets    = st.text_input (label='Target planet: ', placeholder="Example: 'TRAPPIST-1 c' or 'All'")
+    start_date = st.datetime_input (label='Start date: ')
+    end_date   = st.datetime_input (label='End date: **(Must be later than the Start Date)**')
+    timezone = st.selectbox (label = 'Timezone of output dates / UTC offset', options = options, index = options.index(('UTC', 0)))
+    Vband_limit = st.number_input (label = 'V-band Magnitude limit', placeholder = 10)
     ed_submit  = st.form_submit_button('Submit')
 
 if ed_submit:
@@ -229,7 +229,7 @@ if 'NEAcsv' in st.session_state:
     st.divider(width = 'stretch')
 
     tz_name, tz_offset_val = timezone
-    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = 20, timezone = tz_name, tz_offset = tz_offset)
+    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = 20, Vband_limit = Vband_limit, timezone = tz_name, tz_offset = tz_offset)
     st.session_state['TDates'] = TDates          
     st.session_state['tz_name'] = tz_name   
     filtered_obs = show_data_loc(TDates)
