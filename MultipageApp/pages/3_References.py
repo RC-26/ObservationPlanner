@@ -33,10 +33,10 @@ from astroplan.plots import plot_sky
 
 from Utility import Render_Sidebar
 
-st.logo("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
+st.logo ("official-logo.png", size = "large", link = "https://philsa.gov.ph") 
 
-st.title("References") 
-st.caption("All the references used to make this pipeline")
+st.title ("References") 
+st.caption ("All the references used to make this pipeline")
 
 Render_Sidebar()
 
@@ -44,22 +44,22 @@ Render_Sidebar()
 
 st.divider(width = "stretch")
 
-st.subheader("Skynet Robotic Telescope Network")
-st.caption("https://skynet.unc.edu/")
-st.subheader("Nasa Exoplanet Archive")
-st.caption("https://iopscience.iop.org/article/10.3847/PSJ/ade3c2")
-st.subheader("Astropy")
-st.caption("Astropy Collaboration. Astrophys. J. 935 (167) 2022")
-st.subheader("Astroquery")
-st.caption("A. Ginsburg et. al. Astron. J. 157 (98) 2019")
-st.subheader("Astroplan")
-st.caption("B. M. Morris et. al. Astron. J. 155 (128) 2018")
+st.subheader ("Skynet Robotic Telescope Network")
+st.caption   ("https://skynet.unc.edu/")
+st.subheader ("NASA Exoplanet Archive")
+st.caption   ("https://iopscience.iop.org/article/10.3847/PSJ/ade3c2")
+st.subheader ("Astropy")
+st.caption   ("Astropy Collaboration. Astrophys. J. 935 (167) 2022")
+st.subheader ("Astroquery")
+st.caption   ("A. Ginsburg et. al. Astron. J. 157 (98) 2019")
+st.subheader ("Astroplan")
+st.caption   ("B. M. Morris et. al. Astron. J. 155 (128) 2018")
 
 st.divider   (width = "stretch")
 
 ############################################################################
 
-st.write ("This Streamlit app was developed by **Arcy Layne L. Sace**<sup>1</sup>, **Darren Mykel V. Gapay**<sup>2</sup>, **Ernest P. Macalalad**<sup>1</sup>, & **Reinabelle C. Reyes**<sup>1,3</sup>", unsafe_allow_html = True)
+st.markdown ("This Streamlit app was developed by **Arcy Layne L. Sace**<sup>1</sup>, **Darren Mykel V. Gapay**<sup>2</sup>, **Ernest P. Macalalad**<sup>1</sup>, & **Reinabelle C. Reyes**<sup>1,3</sup>", unsafe_allow_html = True)
 st.write ("<sup>1</sup>Philippine Space Agency, Eastwood Avenue, Brgy. Bagumbayan, Quezon City, Philippines  \n<sup>2</sup>University of Glasgow, University Avenue, Glasgow, G12 8QQ, Scotland, United Kingdom  \n<sup>3</sup>Research Center for Theoretical Physics, Central Visayan Institute Foundation, Jagna, Bohol, Philippines", unsafe_allow_html = True)
 # st.write ("<sup>1</sup>Philippine Space Agency, Eastwood Avenue, Brgy. Bagumbayan, Quezon City, Philippines", unsafe_allow_html = True)
 # st.write ("<sup>2</sup>University of Glasgow, University Avenue, Glasgow, G12 8QQ, Scotland, United Kingdom", unsafe_allow_html = True)
