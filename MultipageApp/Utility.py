@@ -166,7 +166,9 @@ def Get_NEAdata(targets = None, Vband_limit = None):
     NEAcsv = NEAdata.to_pandas(index=False).sort_values('pl_name')
 
     # FIX: check for 'All' BEFORE filtering, otherwise [' '] wipes everything
+    st.write (targets)
     if targets is not None and targets != [' ']:
+        st.write(targets)
         NEAcsv = NEAcsv[NEAcsv[['hostname', 'pl_name']].isin(targets).any(axis=1)]
 
     NEAcsv = NEAcsv.drop(columns=['sky_coord.ra', 'sky_coord.dec'])
