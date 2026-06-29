@@ -45,7 +45,7 @@ Render_Sidebar()
 
 st.subheader('Generate Calendars')
 st.caption("This function produces an .ics file for users to import in their calendar (Gmail and/or Outlook Calendar) for their planning purposes.")
-st.caption("**NOTE: The times stated in the ICS files correspond to the timezone you have specified in the 'Observation Planner' tab.**")
+st.caption("**NOTE: The times written in the ICS files correspond to the timezone you have specified in the 'Observation Planner' tab.**")
 st.divider(width = 'stretch')
 
 ############################################################################
