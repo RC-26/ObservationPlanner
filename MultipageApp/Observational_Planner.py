@@ -213,6 +213,7 @@ with st.form('Submission_Form'):
     start_date = st.datetime_input (label='Start date: ')
     end_date   = st.datetime_input (label='End date: **(Must be later than the Start Date)**')
     timezone = st.selectbox (label = 'Timezone of output dates / UTC offset', options = options, index = options.index(('UTC', 0)))
+    min_alt     = st.number_input (label = 'Minimum Altitude **(Default value = 20.00)**'      , value = 20.00, placeholder = "Default value = 20")
     Vband_limit = st.number_input (label = 'V-band Magnitude limit **(Default value = 10.00)**', value = 10.00, placeholder = "Default value = 10")
     ed_submit  = st.form_submit_button('Submit')
 
@@ -229,7 +230,7 @@ if 'NEAcsv' in st.session_state:
     st.divider(width = 'stretch')
 
     tz_name, tz_offset_val = timezone
-    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = 20, timezone = tz_name, tz_offset = tz_offset)
+    TDates = Generate_Transit_Dates(NEAcsv, obs_csv = SN_OBS, min_alt = min_alt, timezone = tz_name, tz_offset = tz_offset)
     st.session_state['TDates'] = TDates          
     st.session_state['tz_name'] = tz_name   
     filtered_obs = show_data_loc(TDates)
